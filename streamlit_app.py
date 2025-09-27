@@ -18,7 +18,8 @@ def load_data():
 df = load_data()
 
 # Department Selection Dropdown
-st.sidebar.header("Select Departments to Visualize")
+# st.sidebar.header("Select Departments to Visualize")
+st.sidebar.header("Select Department(s)")
 departments = df["Duty Description"].unique().tolist()
 
 if "selected_departments" not in st.session_state:
