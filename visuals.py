@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
 def workforce_growth(df_filtered):
-     # Workforce Growth Trend
+     # Workforce Growth Trend.
     workforce_trend = df_filtered.groupby("Year")["PID"].count()
 
-    # Linear Regression Model
+    # Linear Regression Model.
     X = np.array(workforce_trend.index).reshape(-1,1)
     Y = np.array(workforce_trend.values)
 
@@ -15,7 +15,7 @@ def workforce_growth(df_filtered):
         model = LinearRegression()
         model.fit(X, Y)
 
-        # Predict Future Years
+        # Predict Future Years.
         future_years = np.array(range(int(X[-1])+1, int(X[-1])+6)).reshape(-1,1)
         predictions = model.predict(future_years)
 
@@ -41,7 +41,7 @@ def workforce_growth(df_filtered):
         st.warning("Not enough data to perform linear regression.")
 
 def pie(df_filtered):
-    # Employee Distribution by Department
+    # Employee Distribution by Department.
     department_trend = df_filtered.groupby("Department")["PID"].count()
 
     if len(department_trend) > 0:

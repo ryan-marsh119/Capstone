@@ -22,6 +22,7 @@ try:
     if "checked_all" not in st.session_state:
         st.session_state["checked_all"] = True
 
+    # Functions below are for the multiselect option when selecting departments to analyze.
     def handle_checkbox():
         if st.session_state["checked_all"]:
             st.session_state["selected_departments"] = departments
@@ -45,41 +46,6 @@ try:
         on_change=handle_checkbox
     )
      
-    # if "selected_departments" not in st.session_state:
-    #     st.session_state.selected_departments = departments
-
-    # select_all = st.sidebar.checkbox("Select All Departments", value=True if set(st.session_state.selected_departments) == set(departments) else False, on_change=)
-
-    # selected_departments = st.sidebar.multiselect("Choose departments:", options=departments, default=st.session_state.selected_departments)
-
-    # if select_all:
-    #     selected_departments = departments
-    # else:
-    #     if selected_departments == departments:
-    #         selected_departments = []
-
-    # def change_checked():
-    #     st.session_state['checked'] = not st.session_state['checked']
-    #     return
-
-    # if 'checked' not in st.session_state:
-    #     st.session_state['checked'] = True
-
-    # if 'selected_departments' not in st.session_state:
-    #     st.session_state['selected_departments'] = departments
-
-    # container = st.container()
-
-    # all = st.checkbox("Select all Departments", value=st.session_state['checked'], on_change=change_checked)
-    # # selected_departments = departments
-
-    
-    # if all and (st.session_state['selected_departments'] == departments):
-    #     st.session_state['selected_departments'] = container.multiselect("Choose departments:", options=departments, default=departments)
-
-    # else:
-    #     st.session_state['selected_departments'] = container.multiselect("Choose departments:", options=departments)
-
     # Filter Data Based on Year Selected
     df_filtered = select_dept(df, st.session_state['selected_departments'])
 
@@ -136,6 +102,7 @@ try:
                 'Start_Date': None
             }
 
+            # Form to add new employee to the database.
             st.write("Enter the new employee's information below:")
 
             employee_form['First_Name'] = st.text_input("First Name")

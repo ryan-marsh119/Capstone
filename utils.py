@@ -1,6 +1,7 @@
 import pandas as pd
 import uuid
 
+# Read data from CSV to be returned. Parsing out year from start date.
 def load_data():
     df = pd.read_csv("personnel_updated.csv")
     df["Start_Date"] = pd.to_datetime(df["Start_Date"], format="%Y-%m-%d")
@@ -9,11 +10,13 @@ def load_data():
 
     return df
 
+# Helper function used to display only the selected departments in visuals.
 def select_dept(data, departments):
     data_filtered = data[data["Department"].isin(departments)]
 
     return data_filtered
 
+# Add employee to the database via the form from streamlit_app.py. new_id generated via uuid4() function.
 def add_data(employee_data):    
     df = pd.read_csv('personnel_updated.csv')
     
